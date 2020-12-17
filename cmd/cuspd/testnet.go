@@ -41,7 +41,7 @@ var (
 	flagStartingIPAddress = "starting-ip-address"
 )
 
-// get cmd to initialize all files for tendermint testnet and application
+// get cmd to initialize all files for aphelion testnet and application
 func testnetCmd(ctx *server.Context, cdc *codec.Codec,
 	mbm module.BasicManager, genAccIterator genutiltypes.GenesisAccountsIterator,
 ) *cobra.Command {
@@ -55,7 +55,7 @@ necessary files (private validator, genesis, config, etc.).
 Note, strict routability for addresses is turned off in the config file.
 
 Example:
-	libod testnet --v 4 --output-dir ./output --starting-ip-address 192.168.10.2
+	cusp testnet --v 4 --output-dir ./output --starting-ip-address 192.168.10.2
 	`,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			config := ctx.Config
@@ -80,9 +80,9 @@ Example:
 		"Directory to store initialization data for the testnet")
 	cmd.Flags().String(flagNodeDirPrefix, "node",
 		"Prefix the directory name for each node with (node results in node0, node1, ...)")
-	cmd.Flags().String(flagNodeDaemonHome, "libod",
+	cmd.Flags().String(flagNodeDaemonHome, "cusp",
 		"Home directory of the node's daemon configuration")
-	cmd.Flags().String(flagNodeCLIHome, "libocli",
+	cmd.Flags().String(flagNodeCLIHome, "cuspcli",
 		"Home directory of the node's cli configuration")
 	cmd.Flags().String(flagStartingIPAddress, "192.168.0.1",
 		"Starting IP address (192.168.0.1 results in persistent peers list ID0@192.168.0.1:46656, ID1@192.168.0.2:46656, ...)")
@@ -90,7 +90,7 @@ Example:
 		client.FlagChainID, "", "genesis file chain-id, if left blank will be randomly created")
 	cmd.Flags().String(
 		server.FlagMinGasPrices, fmt.Sprintf("0.000006%s", sdk.DefaultBondDenom),
-		"Minimum gas prices to accept for transactions; All fees in a tx must meet this minimum (e.g. 0.01photino,0.001stake)")
+		"Minimum gas prices to accept for transactions; All fees in a tx must meet this minimum (e.g. 0.01photino,0.001libocoin)")
 	return cmd
 }
 
@@ -237,7 +237,7 @@ func InitTestnet(cmd *cobra.Command, config *tmconfig.Config, cdc *codec.Codec,
 
 		// TODO: Rename config file to server.toml as it's not particular to Cusp
 		// (REF: https://github.com/evdatsion/cusp-sdk/issues/4125).
-		cuspConfigFilePath := filepath.Join(nodeDir, "config/libod.toml")
+		cuspConfigFilePath := filepath.Join(nodeDir, "config/cusp.toml")
 		srvconfig.WriteConfigFile(cuspConfigFilePath, cuspConfig)
 	}
 

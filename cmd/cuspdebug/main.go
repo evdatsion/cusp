@@ -36,7 +36,7 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:          "libodebug",
+	Use:          "cuspdebug",
 	Short:        "Cusp debug tool",
 	SilenceUsage: true,
 }

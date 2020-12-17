@@ -60,7 +60,7 @@ func Request(t *testing.T, port, method, path string, payload []byte) (*http.Res
 }
 
 // ----------------------------------------------------------------------
-// ICS 0 - Tendermint
+// ICS 0 - Aphelion
 // ----------------------------------------------------------------------
 // GET /node_info The properties of the connected node
 func getNodeInfo(t *testing.T, port string) rpc.NodeInfoResponse {
@@ -425,7 +425,7 @@ func signAndBroadcastGenTx(
 }
 
 // ----------------------------------------------------------------------
-// ICS 21 - Stake
+// ICS 21 - Libocoin
 // ----------------------------------------------------------------------
 
 // POST /staking/delegators/{delegatorAddr}/delegations Submit delegation

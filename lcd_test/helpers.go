@@ -52,9 +52,9 @@ import (
 )
 
 // TODO: Make InitializeTestLCD safe to call in multiple tests at the same time
-// InitializeLCD starts Tendermint and the LCD in process, listening on
+// InitializeLCD starts Aphelion and the LCD in process, listening on
 // their respective sockets where nValidators is the total number of validators
-// and initAddrs are the accounts to initialize with some stake tokens. It
+// and initAddrs are the accounts to initialize with some libocoin tokens. It
 // returns a cleanup function, a set of validator public keys, and a port.
 func InitializeLCD(nValidators int, initAddrs []sdk.AccAddress, minting bool, portExt ...string) (
 	cleanup func(), valConsPubKeys []crypto.PubKey, valOperAddrs []sdk.ValAddress, port string, err error) {
@@ -91,10 +91,10 @@ func InitializeLCD(nValidators int, initAddrs []sdk.AccAddress, minting bool, po
 		port = portExt[0]
 	}
 
-	// XXX: Need to set this so LCD knows the tendermint node address!
+	// XXX: Need to set this so LCD knows the aphelion node address!
 	viper.Set(client.FlagNode, config.RPC.ListenAddress)
 	viper.Set(client.FlagChainID, genDoc.ChainID)
-	// TODO Set to false once the upstream Tendermint proof verification issue is fixed.
+	// TODO Set to false once the upstream Aphelion proof verification issue is fixed.
 	viper.Set(client.FlagTrustNode, true)
 
 	node, err := startTM(config, logger, genDoc, privVal, app)
@@ -294,7 +294,7 @@ func defaultGenesis(config *tmcfg.Config, nValidators int, initAddrs []sdk.AccAd
 	return
 }
 
-// startTM creates and starts an in-process Tendermint node with memDB and
+// startTM creates and starts an in-process Aphelion node with memDB and
 // in-process ABCI application. It returns the new node or any error that
 // occurred.
 //
@@ -330,7 +330,7 @@ func startTM(
 	}
 
 	tests.WaitForRPC(tmcfg.RPC.ListenAddress)
-	logger.Info("Tendermint running!")
+	logger.Info("Aphelion running!")
 
 	return node, err
 }
@@ -347,7 +347,7 @@ func startLCD(logger log.Logger, listenAddr string, cdc *codec.Codec) (net.Liste
 	return listener, nil
 }
 
-// NOTE: If making updates here also update cmd/cusp/cmd/libocli/main.go
+// NOTE: If making updates here also update cmd/cusp/cmd/cuspcli/main.go
 func registerRoutes(rs *lcd.RestServer) {
 	client.RegisterRoutes(rs.CliCtx, rs.Mux)
 	authrest.RegisterTxRoutes(rs.CliCtx, rs.Mux)
@@ -467,7 +467,7 @@ func makePathname() (string, error) {
 	return strings.Replace(p, sep, "_", -1), nil
 }
 
-// GetConfig returns a Tendermint config for the test cases.
+// GetConfig returns a Aphelion config for the test cases.
 func GetConfig() (*tmcfg.Config, error) {
 	pathname, err := makePathname()
 	if err != nil {

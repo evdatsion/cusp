@@ -65,7 +65,7 @@ func replayTxs(rootDir string) error {
 
 	// TM DB
 	// tmDB := dbm.NewMemDB()
-	fmt.Fprintln(os.Stderr, "Opening tendermint state database")
+	fmt.Fprintln(os.Stderr, "Opening aphelion state database")
 	tmDB, err := sdk.NewLevelDB("state", dataDir)
 	if err != nil {
 		return err

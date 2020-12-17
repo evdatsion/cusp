@@ -33,11 +33,11 @@ import (
 const appName = "CuspApp"
 
 var (
-	// default home directories for libocli
-	DefaultCLIHome = os.ExpandEnv("$HOME/.libocli")
+	// default home directories for cuspcli
+	DefaultCLIHome = os.ExpandEnv("$HOME/.cuspcli")
 
-	// default home directories for libod
-	DefaultNodeHome = os.ExpandEnv("$HOME/.libod")
+	// default home directories for cusp
+	DefaultNodeHome = os.ExpandEnv("$HOME/.cusp")
 
 	// The module BasicManager is in charge of setting up basic,
 	// non-dependant module elements, such as codec registration

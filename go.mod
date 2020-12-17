@@ -4,11 +4,11 @@ go 1.12
 
 require (
 	github.com/btcsuite/btcd v0.0.0-20190523000118-16327141da8c // indirect
-	github.com/evdatsion/aphelion-dpos-bft v0.32.14-rf2
-	github.com/evdatsion/cusp-sdk v0.1.2-br-cusp
-	github.com/evdatsion/go-amino v0.15.1-rf1
+	github.com/evdatsion/aphelion-dpos-bft v0.1.2-t03214e
+	github.com/evdatsion/cusp-sdk v0.1.1-t03715
+	github.com/evdatsion/go-amino v0.1.2-t0151
 	github.com/evdatsion/go-bip39 v0.0.0-20180819234021-555e2067c45d // indirect
-	github.com/evdatsion/tm-db v0.2.0-rf1
+	github.com/evdatsion/tm-db v0.1.1-t020
 	github.com/golang/mock v1.3.1 // indirect
 	github.com/gorilla/mux v1.7.3 // indirect
 	github.com/mattn/go-isatty v0.0.8 // indirect

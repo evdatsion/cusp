@@ -26,7 +26,7 @@ import (
 	"github.com/evdatsion/cusp-sdk/x/staking"
 )
 
-// libod custom flags
+// cusp custom flags
 const flagInvCheckPeriod = "inv-check-period"
 
 var invCheckPeriod uint
@@ -43,7 +43,7 @@ func main() {
 	ctx := server.NewDefaultContext()
 	cobra.EnableCommandSorting = false
 	rootCmd := &cobra.Command{
-		Use:               "libod",
+		Use:               "cusp",
 		Short:             "Cusp Daemon (server)",
 		PersistentPreRunE: server.PersistentPreRunEFn(ctx),
 	}
